@@ -1,18 +1,18 @@
 from pycaret.regression import load_model, predict_model
 import pandas as pd
 
-# Load the trained model
+
 model = load_model('green_score_model')
 
 def recommend_tips(input_data):
-    # Prepare the input as a DataFrame
+    
     df = pd.DataFrame([input_data])
     
-    # Predict the Green Score
+    
     prediction = predict_model(model, data=df)
     score = prediction['prediction_label'].values[0]
 
-    # Rule-based recommendations based on the Green Score
+    
     if score > 80:
         tip = "You're doing great! 🌿 Try switching to renewable energy sources next."
     elif score > 60:

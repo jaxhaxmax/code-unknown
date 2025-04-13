@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Code Green – Rethinking Sustainability</title>
   <style>
+
+.co2-tracker {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  background-color: #ecfdf5;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: var(--card-shadow);
+  z-index: 1000;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+}
+
+.co2-tracker strong {
+  color: var(--secondary-color);
+}
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -288,15 +310,12 @@ header {
   <section class="hero">
     <h2>
         <span class="earth-icon">🌍</span> 
-        <span class="headline-highlight">Rethinking Sustainability</span><br />
-        in the Digital Age
-      </h2>
-      
-    <p>
-      Every click, stream, and scroll leaves a mark. <br />
-      <strong>Code Green</strong> empowers you to track, learn, and reduce your digital footprint—<em>one smart action at a time</em>.
-    </p>
-    <button class="cta-btn" onclick="alert('Welcome to Code Green! 🌱')">🚀 Get Started</button>
+        <span>A Better Tomorrow</span>
+        <div class="co2-tracker">
+          <span>🌫️ CO₂ Emitted: <strong id="co2-counter">0.000</strong> kg</span>
+          <br />
+          <span>💚 CO₂ Saved Today: <strong id="co2-saved">0.000</strong> kg</span>
+        </div>
   </section>
   
 
@@ -362,6 +381,7 @@ header {
     <div style="background: #16a34a; color: white; padding: 1rem; font-weight: bold;">
       🌱 Code Green Chatbot
     </div>
+<<<<<<< Updated upstream
     <div id="chat-messages" style="padding: 1rem; flex: 1; overflow-y: auto; font-size: 0.9rem;"></div>
     <form id="chat-form" style="display: flex; border-top: 1px solid #eee;">
       <input type="text" id="chat-input" placeholder="Ask me anything..." style="flex: 1; border: none; padding: 0.8rem; outline: none;" />
@@ -413,6 +433,9 @@ header {
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 </script>
+=======
+  <script
+>>>>>>> Stashed changes
 
 </body>
 </html>

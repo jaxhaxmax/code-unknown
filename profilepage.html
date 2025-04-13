@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoTrack - Your Carbon Profile</title>
+  <link rel="stylesheet" href="profilestyle.css">
+  
+</head>
+<body>
+    
+        <header>
+            <nav>
+                <div class="logo">
+                    <span class="logo-icon">🌱</span>
+                    <span>EcoTrack</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#">Dashboard</a>
+                    <a href="#">Activities</a>
+                    <a href="#">Challenges</a>
+                    <a href="#">Community</a>
+                    <a href="#">Resources</a>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">JS</div>
+                </div>
+            </nav>
+        </header>
+        
+        <main>
+            <div class="dashboard-grid">
+                <div class="user-overview">
+                    <div class="user-header">
+                        <div class="user-avatar-large">JS</div>
+                        <div class="user-details">
+                            <h2>John Smith</h2>
+                            <p class="user-bio">Environmental enthusiast, working to reduce my carbon footprint one step at a time.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <h3>Weekly CO2</h3>
+                            <div class="stat-value" id="weeklyEmission">42.8 kg</div>
+                            <p>Down 12% from last week</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Total Credits</h3>
+                            <div class="stat-value" id="totalCredits">835</div>
+                            <p>Earned from 28 activities</p>
+                        </div>
+                    </div>
+                    
+                    <div class="eco-level">
+                        <h3>Eco Level: Forest Protector</h3>
+                        <div class="level-progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <p>125 credits until next level: Climate Champion</p>
+                    </div>
+                    
+                    <div class="tips-container">
+                        <h3>Personal Tips</h3>
+                        <div class="tip-card">
+                            <h4>Try biking to work</h4>
+                            <p>Based on your commute data, you could save 18kg of CO2 weekly by biking twice a week.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-content">
+                    <div class="card">
+                        <div class="section-header">
+                            <h3>Weekly CO2 Emissions Breakdown</h3>
+                            <select id="timeRangeSelector">
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                                <option value="year">This Year</option>
+                            </select>
+                        </div>
+                        <div class="emissions-chart-container" id="emissionsChart"></div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="section-header">
+                            <h3>Recent Activities</h3>
+                            <button class="btn btn-outline">View All</button>
+                        </div>
+                        <div class="activities-list">
+                            <div class="activity-card">
+                                <div class="activity-info">
+                                    <div class="activity-icon">🚲</div>
+                                    <div class="activity-details">
+                                        <h4>Bike to Work</h4>
+                                        <p>April 11, 2025 • 8.2 km</p>
+                                    </div>
+                                </div>
+                                <div class="credits-earned">+25 credits</div>
+                            </div>
+                            <div class="activity-card">
+                                <div class="activity-info">
+                                    <div class="activity-icon">♻️</div>
+                                    <div class="activity-details">
+                                        <h4>Waste Recycling</h4>
+                                        <p>April 10, 2025 • 3.5 kg</p>
+                                    </div>
+                                </div>
+                                <div class="credits-earned">+15 credits</div>
+                            </div>
+                            <div class="activity-card">
+                                <div class="activity-info">
+                                    <div class="activity-icon">🥗</div>
+                                    <div class="activity-details">
+                                        <h4>Plant-Based Meals</h4>
+                                        <p>April 8-10, 2025 • 6 meals</p>
+                                    </div>
+                                </div>
+                                <div class="credits-earned">+30 credits</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="section-header">
+                            <h3>Environmental Impact Timeline</h3>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <div class="timeline-date">April 12, 2025</div>
+                                    <h4>Reduced Carbon Footprint Milestone</h4>
+                                    <p>You've reduced your carbon footprint by 100kg this month! That's equivalent to planting 5 trees.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <div class="timeline-date">April 9, 2025</div>
+                                    <h4>Energy Conservation Challenge Completed</h4>
+                                    <p>Reduced home energy usage by 15% over two weeks. Saved approximately 22kg of CO2.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <div class="timeline-date">April 5, 2025</div>
+                                    <h4>Community Clean-up Event</h4>
+                                    <p>Participated in local beach clean-up. Removed 12kg of plastic waste from the environment.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#">About Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <p>&copy; 2025 EcoTrack. All rights reserved.</p>
+            </div>
+        </footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<script>
+  const userData = {
+    name: "John Smith",
+    weeklyEmission: 42.8,
+    totalCredits: 835,
+    activities: [
+      { type: "Bike to Work", date: "April 11, 2025", details: "8.2 km", credits: 25, icon: "🚲" },
+      { type: "Waste Recycling", date: "April 10, 2025", details: "3.5 kg", credits: 15, icon: "♻️" },
+      { type: "Plant-Based Meals", date: "April 8-10, 2025", details: "6 meals", credits: 30, icon: "🥗" },
+      { type: "Public Transport", date: "April 7, 2025", details: "12.5 km", credits: 20, icon: "🚌" },
+      { type: "Energy Saving", date: "April 6, 2025", details: "Reduced usage by 10%", credits: 15, icon: "💡" }
+    ],
+    emissionsData: {
+      week: {
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        datasets: [
+          {
+            label: "Transport",
+            data: [3.2, 2.8, 3.0, 1.5, 1.2, 4.5, 2.1],
+            backgroundColor: "#3498db"
+          },
+          {
+            label: "Food",
+            data: [2.5, 2.2, 1.8, 2.0, 2.3, 3.1, 2.7],
+            backgroundColor: "#e67e22"
+          },
+          {
+            label: "Home Energy",
+            data: [1.8, 1.6, 1.5, 1.7, 1.9, 2.0, 1.6],
+            backgroundColor: "#9b59b6"
+          },
+          {
+            label: "Other",
+            data: [0.8, 0.7, 0.9, 0.6, 1.0, 1.2, 0.5],
+            backgroundColor: "#34495e"
+          }
+        ]
+      }
+    }
+  };
+
+  function initEmissionsChart() {
+    const ctx = document.createElement("canvas");
+    document.getElementById("emissionsChart").appendChild(ctx);
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: userData.emissionsData.week.labels,
+        datasets: userData.emissionsData.week.datasets
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "top"
+          },
+          title: {
+            display: true,
+            text: "Your Weekly Emissions by Category"
+          }
+        }
+      }
+    });
+  }
+
+  window.onload = initEmissionsChart;
+</script>
+</body>
+</html>

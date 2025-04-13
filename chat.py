@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from recommend import recommend_tips  # <-- Import the recommendation function
+from recommend import recommend_tips  
 
 app = Flask(__name__)
 CORS(app)
@@ -10,9 +10,9 @@ def chat():
     data = request.get_json()
     message = data.get('message', '').lower()
 
-    # If the user asks for a sustainability tip
+    
     if "recommend" in message or "tip" in message:
-        # In a real app, you would ask the user for input dynamically (device usage, etc.)
+        
         input_data = {
             "device_hours": 6,
             "streaming_hours": 3,
