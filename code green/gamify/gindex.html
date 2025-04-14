@@ -1,0 +1,37 @@
+<!-- views/missions.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sustainability Missions</title>
+  <link rel="stylesheet" href="/styles/missions.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🌱 Sustainability Missions</h1>
+
+    <section class="missions">
+      <% missions.forEach((mission, index) => { %>
+        <div class="task-card" data-id="<%= mission.id %>">
+          <h3><%= mission.title %></h3>
+          <p><%= mission.description %></p>
+          <button onclick="completeTask('<%= mission.id %>')">Complete</button>
+        </div>
+      <% }); %>
+    </section>
+
+    <section class="leaderboard">
+      <h2>🏆 Leaderboard</h2>
+      <ol>
+        <% leaderboard.forEach(user => { %>
+          <li><%= user.username %> - <%= user.points %> pts</li>
+        <% }); %>
+      </ol>
+    </section>
+
+    <audio id="reward-sound" src="/sounds/reward.mp3" preload="auto"></audio>
+  </div>
+
+  <script src="/scripts/missions.js"></script>
+</body>
+</html>

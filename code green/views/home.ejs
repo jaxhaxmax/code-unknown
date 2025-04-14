@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Code Green – Rethinking Sustainability</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-light: #a7f3d0;
+      --primary-dark: #047857;
+      --secondary: #3b82f6;
+      --light: #f8fafc;
+      --dark: #1e293b;
+      --darker: #0f172a;
+      --gray: #64748b;
+      --glass: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0fdf4;
+      color: var(--darker);
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    }
+
+    .floating-elements {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .floating-element {
+      position: absolute;
+      opacity: 0.6;
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% {
+        transform: translate(50px, -50px) rotate(90deg);
+      }
+      50% {
+        transform: translate(100px, 0) rotate(180deg);
+      }
+      75% {
+        transform: translate(50px, 50px) rotate(270deg);
+      }
+      100% {
+        transform: translate(0, 0) rotate(360deg);
+      }
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+      color: var(--primary);
+    }
+
+    .navbar {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar li a {
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      color: var(--primary-dark);
+      font-weight: 500;
+      font-size: 1rem;
+      border-radius: 50px;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    .navbar li a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: all 0.6s ease;
+    }
+
+    .navbar li a:hover {
+      background: rgba(16, 185, 129, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(16, 185, 129, 0.1);
+    }
+
+    .navbar li a:hover::before {
+      left: 100%;
+    }
+
+    .navbar li a.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+    }
+
+  
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg, #d1fae5, #a7f3d0);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        rgba(16, 185, 129, 0.1) 0%,
+        rgba(59, 130, 246, 0.1) 50%,
+        rgba(16, 185, 129, 0.1) 100%
+      );
+      animation: gradientRotate 20s ease infinite;
+      z-index: 0;
+    }
+
+    @keyframes gradientRotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hero h2 {
+      font-size: 3.2rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .headline-highlight {
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+    }
+
+    .headline-highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+      background: rgba(167, 243, 208, 0.8);
+      z-index: -1;
+      border-radius: 20px;
+      transform-origin: left;
+      animation: highlightExpand 1.5s ease-out forwards;
+    }
+
+    @keyframes highlightExpand {
+      0% {
+        transform: scaleX(0);
+      }
+      100% {
+        transform: scaleX(1);
+      }
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      color: var(--primary-dark);
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+
+    .cta-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+      z-index: 1;
+      animation: fadeInUp 0.8s ease 0.4s both;
+    }
+
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: all 0.6s ease;
+    }
+
+    .cta-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+    }
+
+    .cta-btn:hover::before {
+      left: 100%;
+    }
+
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 5rem 2rem;
+      perspective: 1000px;
+    }
+
+    .feature {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-style: preserve-3d;
+      position: relative;
+      overflow: hidden;
+      border-left: 5px solid var(--primary);
+    }
+
+    .feature::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent, rgba(16, 185, 129, 0.05));
+      z-index: -1;
+    }
+
+    .feature:hover {
+      transform: translateY(-10px) rotateX(3deg) rotateY(3deg);
+      box-shadow: 0 15px 30px rgba(16, 185, 129, 0.1);
+    }
+
+    .icon-circle {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: white;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .feature:hover .icon-circle {
+      transform: scale(1.1) rotate(15deg);
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+    }
+
+    .feature h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--primary-dark);
+    }
+
+    .feature p {
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+
+    .join-section {
+      text-align: center;
+      padding: 5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #a7f3d0, #86efac);
+      border-radius: 16px;
+      margin: 3rem auto;
+      max-width: 900px;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+    }
+
+    .join-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9InJnYmEoMCwgMCwgMCwgMC4wNSkiIGZpbGwtcnVsZT0ibm9uemVybyI+PHBhdGggZD0iTTM2IDM0aDZ2MmgtNnpNNCAzNGg2djJINHpNNC40djZoMlY0aDJ6bTI4IDBoMnY2aC0yek0xMCAzNGgydjJoLTJ6bTI4IDBoMnYyaC0yek0xMCAxMGgydjJoLTJ6bTI4IDBoMnYyaC0yek0xNiAxMGgydjJoLTJ6bTI4IDBoMnYyaC0yek0xNiAzNGgydjJoLTJ6bTI4IDBoMnYyaC0yek0yMiAxMGgydjJoLTJ6bTI4IDBoMnYyaC0yek0yMiAzNGgydjJoLTJ6bTI4IDBoMnYyaC0yek0xMCAxNmgydjJoLTJ6bTI4IDBoMnYyaC0yek0xMCAyNGgydjJoLTJ6bTI4IDBoMnYyaC0yek0xMCAyMGgydjJoLTJ6bTI4IDBoMnYyaC0yek0xMCAyOGgydjJoLTJ6bTI4IDBoMnYyaC0yek0xNiAxNmgydjJoLTJ6bTI4IDBoMnYyaC0yek0xNiAyNGgydjJoLTJ6bTI4IDBoMnYyaC0yek0xNiAyMGgydjJoLTJ6bTI4IDBoMnYyaC0yek0xNiAyOGgydjJoLTJ6bTI4IDBoMnYyaC0yek0yMiAxNmgydjJoLTJ6bTI4IDBoMnYyaC0yek0yMiAyNGgydjJoLTJ6bTI4IDBoMnYyaC0yek0yMiAyMGgydjJoLTJ6bTI4IDBoMnYyaC0yek0yMiAyOGgydjJoLTJ6bTI4IDBoMnYyaC0yeiIvPjwvZz48L2c+PC9zdmc+');
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .join-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .join-section p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      color: var(--primary-dark);
+      position: relative;
+      z-index: 1;
+    }
+
+    .join-btn {
+      background: transparent;
+      color: var(--primary-dark);
+      border: 2px solid var(--primary-dark);
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .join-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: all 0.6s ease;
+    }
+
+    .join-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
+    }
+
+    .join-btn:hover::before {
+      left: 100%;
+    }
+
+    .calendar-section {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: #f8fafc;
+    }
+
+    .calendar-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-dark);
+    }
+
+    .calendar-section p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      color: var(--gray);
+    }
+
+    #calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.8rem;
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    #calendar div {
+      padding: 1rem;
+      background: var(--primary-light);
+      border-radius: 12px;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #calendar div:hover {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+    }
+
+    #calendar div.active {
+      background: var(--primary-dark);
+      color: white;
+      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+    }
+
+    #calendar div.active::after {
+      content: '✓';
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      font-size: 0.8rem;
+    }
+
+
+    .tooltip {
+      position: absolute;
+      background: white;
+      color: var(--darker);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      font-size: 0.9rem;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 999;
+      max-width: 250px;
+      transform: translateY(10px);
+      animation: tooltipFloat 3s ease infinite;
+    }
+
+    @keyframes tooltipFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: white transparent transparent;
+    }
+    .modal {
+      position: fixed;
+      display: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      opacity: 1;
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 450px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal.show .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .modal-content h3 {
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .modal-content textarea {
+      width: 100%;
+      height: 120px;
+      border-radius: 12px;
+      border: 2px solid var(--primary-light);
+      padding: 1rem;
+      resize: none;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .modal-content textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .modal-actions button {
+      margin: 0;
+      padding: 0.8rem 1.8rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .modal-actions button:first-child {
+      background: var(--primary);
+      color: white;
+    }
+
+    .modal-actions button:last-child {
+      background: #f1f5f9;
+      color: var(--gray);
+    }
+
+    .modal-actions button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background: white;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+    #co2FloatingIcon{
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #16a34a;
+      
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      font-weight: bold;
+      z-index: 999;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: grab;
+      user-select: none;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+      }
+
+      .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      #calendar {
+        grid-template-columns: repeat(7, 1fr);
+        max-width: 100%;
+      }
+     
+    }
+    a {
+      color: #15803d;
+    text-decoration: none;
+  }
+  </style>
+</head>
+<body>
+  <div id="co2FloatingIcon">
+    💨 <span id="visitCo2Counter">0.000</span> kg
+
+  </div>
+  <!-- Floating animated background elements -->
+  <div class="floating-elements">
+    <div class="floating-element" style="top: 20%; left: 10%; font-size: 2rem; color: rgba(16, 185, 129, 0.3);">🌱</div>
+    <div class="floating-element" style="top: 70%; left: 80%; font-size: 1.5rem; color: rgba(59, 130, 246, 0.3);">🌍</div>
+    <div class="floating-element" style="top: 40%; left: 85%; font-size: 2.5rem; color: rgba(16, 185, 129, 0.3);">♻️</div>
+    <div class="floating-element" style="top: 80%; left: 15%; font-size: 1.8rem; color: rgba(59, 130, 246, 0.3);">🌿</div>
+  </div>
+
+  <header>
+    <h1 class="logo"><i class="fas fa-leaf"></i> Code Green</h1>
+    <nav>
+      <ul class="navbar">
+        <li><a href="/home" class="active">Home</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/tasks">Activities</a></li>
+        <li><a href="/news">News</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2><span class="earth-icon">🌍</span> 
+      <span class="headline-highlight">Rethinking Sustainability</span><br />in the Digital Age</h2>
+    <p>Every click, stream, and scroll leaves a mark.<br />
+      <strong>Code Green</strong> empowers you to track, learn, and reduce your digital footprint—<em>one smart action at a time</em>.</p>
+    <button class="cta-btn" onclick="alert('Welcome to Code Green! 🌱')"><a href="/calculate">🚀 Get Started</a></button>
+   
+    <p>
+      🌱 Net CO₂ emitted today: <span id="dailyCo2Counter">0.000</span> kg
+      </p>
+  </section>
+ 
+  <div class="features">
+    <div class="feature">
+      <div class="icon-circle">
+        <i class="fas fa-chart-line"></i>
+      </div>
+      <h3 id="line"><a href="/profile">Track Your Impact</a></h3>
+      <p>Monitor your digital carbon footprint with real-time analytics and personalized insights.</p>
+    </div>
+    <div class="feature">
+      <div class="icon-circle">
+        <i class="fas fa-tasks"></i>
+      </div>
+      <h3 id="line"><a href="/tasks">Complete Chalenges</a></h3>
+      <p>Engage with fun, gamified tasks that help reduce your environmental impact.</p>
+    </div>
+    <div class="feature">
+      <div class="icon-circle">
+        <i class="fas fa-users"></i>
+      </div>
+      <h3 id="line"><a href="/news">Daily Updates</a></h3>
+      <p>Know more about env</p>
+    </div>
+  </div>
+
+  <section class="join-section">
+    <h2><span class="leaf-icon">🌿</span> Ready to Make a Real Impact?</h2>
+    <p>Join Code Green and take your first step toward a cleaner, smarter, and more sustainable digital world.</p>
+    <button class="join-btn">🌱 Let's Go Green</button>
+  </section>
+
+  <section class="calendar-section">
+    <h2><span class="leaf-icon">📅</span> Green Calendar</h2>
+    <p>Click on a day to log your activity. Hover to view it!</p>
+    <div id="calendar"></div>
+  </section>
+
+  <div id="tooltip" class="tooltip"></div>
+<!-- Tipbot Icon -->
+<div class="tipbot-icon" style="position: fixed; bottom: 20px; right: 20px; z-index: 1002; cursor: pointer;">
+  <img src="chatbot.png" alt="AI Tipbot Icon" width="150" height="150">
+</div>
+
+<!-- Floating Tip Container (Initially Hidden) -->
+<div id="tipbot-container" style="display: none;">
+  <div style="
+    position: fixed;
+    bottom: 100px;
+    right: 24px;
+    width: 320px;
+    max-height: 450px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1001;
+  ">
+    <!-- Header -->
+    <div style="background: #16a34a; color: white; padding: 1rem; font-weight: bold;">
+      🌱 Code Green Tipbot
+    </div>
+
+    <!-- Tip Messages -->
+    <div id="tipbot-messages" style="padding: 1rem; flex: 1; overflow-y: auto; font-size: 0.9rem;"></div>
+
+    <!-- Get Tip Button -->
+    <div style="display: flex; border-top: 1px solid #eee;">
+      <button id="get-tip-button" style="background: #16a34a; color: white; border: none; padding: 1rem; width: 100%; cursor: pointer;">
+        Get Green Tip 🌿
+      </button>
+    </div>
+  </div>
+</div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h3>Add Activity for <span id="modal-day"></span></h3>
+      <textarea id="activity-input" placeholder="e.g., Planted trees, recycled paper..."></textarea>
+      <div class="modal-actions">
+        <button onclick="saveActivity()">✅ Save</button>
+        <button onclick="closeModal()">❌ Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Code Green. Built with <i class="fas fa-heart" style="color: #ef4444;"></i> for a better planet.
+  </footer>
+
+  <script>
+
+    const calendar = document.getElementById('calendar');
+    const tooltip = document.getElementById('tooltip');
+    const modal = document.getElementById('modal');
+    const modalDay = document.getElementById('modal-day');
+    const activityInput = document.getElementById('activity-input');
+    const today = new Date().getDate();
+    let hoverTimeout;
+    let currentDay = null;
+    const activities = JSON.parse(localStorage.getItem('ecoActivities') || '{}');
+
+
+    for (let i = 1; i <= 30; i++) {
+      const day = document.createElement('div');
+      day.innerText = i;
+
+
+      if (i === today) {
+        day.classList.add('active');
+      }
+
+ 
+      if (activities[i]) {
+        day.classList.add('active');
+      }
+
+  
+      day.addEventListener('mouseenter', (e) => {
+        hoverTimeout = setTimeout(() => {
+          const activity = activities[i] || '🌱 No activity yet. Click to add.';
+          tooltip.innerText = activity;
+          tooltip.style.top = (e.pageY + 15) + 'px';
+          tooltip.style.left = (e.pageX + 15) + 'px';
+          tooltip.style.opacity = 1;
+        }, 500);
+      });
+
+      day.addEventListener('mousemove', (e) => {
+        tooltip.style.top = (e.pageY + 15) + 'px';
+        tooltip.style.left = (e.pageX + 15) + 'px';
+      });
+
+      day.addEventListener('mouseleave', () => {
+        clearTimeout(hoverTimeout);
+        tooltip.style.opacity = 0;
+      });
+
+      day.addEventListener('click', () => {
+        currentDay = i;
+        modalDay.innerText = `Day ${i}`;
+        activityInput.value = activities[i] || '';
+        modal.classList.add('show');
+      });
+
+      calendar.appendChild(day);
+    }
+
+ 
+    function closeModal() {
+      modal.classList.remove('show');
+    }
+
+    function saveActivity() {
+      if (currentDay) {
+        activities[currentDay] = activityInput.value;
+        localStorage.setItem('ecoActivities', JSON.stringify(activities));
+        
+     
+        const days = calendar.querySelectorAll('div');
+        days[currentDay - 1].classList.add('active');
+      }
+      closeModal();
+    }
+
+ 
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.feature, .join-section, .calendar-section');
+      elements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }
+      });
+    };
+
+    document.querySelectorAll('.feature, .join-section, .calendar-section').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.6s ease-out';
+    });
+
+
+    setTimeout(animateOnScroll, 300);
+
+    window.addEventListener('scroll', animateOnScroll);
+    const CO2_PER_SECOND = 0.000176;
+
+    const dailyCounter = document.getElementById('dailyCo2Counter');
+    const visitCounter = document.getElementById('visitCo2Counter');
+    const icon = document.getElementById('co2FloatingIcon');
+
+    function getTodayKey() {
+      const now = new Date();
+      return `co2-${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
+    }
+
+    function getStoredCO2() {
+      return parseFloat(localStorage.getItem(getTodayKey())) || 0;
+    }
+
+    function storeCO2(value) {
+      localStorage.setItem(getTodayKey(), value.toFixed(6));
+    }
+
+    let co2Today = getStoredCO2();
+    let co2ThisVisit = 0;
+
+    function updateDisplay() {
+      dailyCounter.textContent = co2Today.toFixed(3);
+      visitCounter.textContent = co2ThisVisit.toFixed(3);
+    }
+
+    updateDisplay();
+
+    setInterval(() => {
+      co2ThisVisit += CO2_PER_SECOND;
+      co2Today += CO2_PER_SECOND;
+      storeCO2(co2Today);
+      updateDisplay();
+    }, 1000);
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    icon.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      offsetX = e.clientX - icon.getBoundingClientRect().left;
+      offsetY = e.clientY - icon.getBoundingClientRect().top;
+      icon.style.cursor = 'grabbing';
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      icon.style.cursor = 'grab';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        icon.style.left = `${e.clientX - offsetX}px`;
+        icon.style.top =`${e.clientY - offsetY}px`;
+        icon.style.right = 'auto';
+        icon.style.bottom = 'auto';
+      }
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+    const tipbotIcon = document.querySelector('.tipbot-icon');
+    const tipbotContainer = document.getElementById('tipbot-container');
+    const getTipBtn = document.getElementById('get-tip-button');
+    const tipbotMessages = document.getElementById('tipbot-messages');
+    let isHoveringTipbot = false;
+
+    // Show tipbot on hover over icon
+    tipbotIcon.addEventListener('mouseenter', () => {
+      tipbotContainer.style.display = 'flex';
+    });
+
+    // Detect hover inside tip container
+    tipbotContainer.addEventListener('mouseenter', () => {
+      isHoveringTipbot = true;
+    });
+    tipbotContainer.addEventListener('mouseleave', () => {
+      isHoveringTipbot = false;
+      tipbotContainer.style.display = 'none';
+    });
+
+    // Hide tip container if not hovering after icon leave
+    tipbotIcon.addEventListener('mouseleave', () => {
+      setTimeout(() => {
+        if (!isHoveringTipbot) {
+          tipbotContainer.style.display = 'none';
+        }
+      }, 200);
+    });
+    getTipBtn.addEventListener('click', () => {
+      const userBubble = document.createElement('div');
+      userBubble.textContent = "Fetching suggestion...";
+      userBubble.style.margin = "0.5rem 0";
+      tipbotMessages.appendChild(userBubble);
+
+      fetch('/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        
+        body: JSON.stringify({ message: 'tip' })
+      })
+      .then(response => response.json())
+      .then(data => {
+        const botBubble = document.createElement('div');
+        botBubble.textContent = data.reply;
+        botBubble.style.margin = "0.5rem 0";
+        botBubble.style.background = "#f0fdf4";
+        botBubble.style.padding = "0.5rem";
+        botBubble.style.borderRadius = "0.5rem";
+        tipbotMessages.appendChild(botBubble);
+        tipbotMessages.scrollTop = tipbotMessages.scrollHeight;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        const errorBubble = document.createElement('div');
+        errorBubble.textContent = "⚠ Unable to fetch tip.";
+        tipbotMessages.appendChild(errorBubble);
+      });
+    });
+  });
+
+  </script>
+</body>
+</html>

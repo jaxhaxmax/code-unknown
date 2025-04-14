@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoNews - Environment Updates</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta name="description" content="Latest environmental news and sustainability updates">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <h1>🌍 EcoNews</h1>
+        <p>Your source for the latest environment and sustainability news</p>
+      </div>
+      <div class="header-illustration">
+        <img src="https://cdn-icons-png.flaticon.com/512/3349/3349367.png" alt="Eco illustration" class="illustration">
+      </div>
+    </div>
+    <div class="wave-divider"></div>
+  </header>
+  
+  <main class="container">
+    <section class="search-section">
+      <div class="search-container">
+        <div class="search-wrapper">
+          <input type="text" id="searchInput" placeholder="Search for environmental topics..." aria-label="Search">
+          <button class="search-btn" onclick="fetchNews()">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
+        <div class="search-tip">Try "climate policy" or "green tech"</div>
+      </div>
+      
+      <div class="topic-tags">
+        <span class="topic-tag" onclick="searchTopic('climate change')">
+          <i class="fas fa-temperature-high"></i> Climate Change
+        </span>
+        <span class="topic-tag" onclick="searchTopic('renewable energy')">
+          <i class="fas fa-solar-panel"></i> Renewable Energy
+        </span>
+        <span class="topic-tag" onclick="searchTopic('biodiversity')">
+          <i class="fas fa-leaf"></i> Biodiversity
+        </span>
+        <span class="topic-tag" onclick="searchTopic('pollution')">
+          <i class="fas fa-smog"></i> Pollution
+        </span>
+        <span class="topic-tag" onclick="searchTopic('sustainability')">
+          <i class="fas fa-recycle"></i> Sustainability
+        </span>
+      </div>
+    </section>
+    
+    <div class="loading-spinner" id="loadingSpinner"></div>
+    
+    <section id="newsContainer" class="news-grid"></section>
+    
+    <div class="newsletter-cta">
+      <h3>Stay Updated with EcoNews</h3>
+      <p>Get weekly environmental news delivered to your inbox</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">🌍 EcoNews</div>
+        <div class="footer-links">
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy</a>
+        </div>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2025 EcoNews - Keeping you informed about our planet</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

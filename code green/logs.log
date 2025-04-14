@@ -1,0 +1,53 @@
+2025-04-15 01:45:42,485:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 01:45:42,486:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 01:45:42,486:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 01:45:42,486:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 01:45:42,713:INFO:Initializing load_model()
+2025-04-15 01:45:42,713:INFO:load_model(model_name=../model/carbon_model, platform=None, authentication=None, verbose=True)
+2025-04-15 01:49:06,218:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 01:49:06,218:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 01:49:06,218:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 01:49:06,218:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 01:49:06,352:INFO:Initializing load_model()
+2025-04-15 01:49:06,352:INFO:load_model(model_name=../model/carbon_model, platform=None, authentication=None, verbose=True)
+2025-04-15 01:52:30,753:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 01:52:30,754:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 01:52:30,754:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 01:52:30,754:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 01:52:30,890:INFO:Initializing load_model()
+2025-04-15 01:52:30,890:INFO:load_model(model_name=../model/carbon_model, platform=None, authentication=None, verbose=True)
+2025-04-15 03:14:14,211:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 03:14:14,212:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 03:14:14,212:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 03:14:14,212:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-15 03:14:14,350:INFO:Initializing load_model()
+2025-04-15 03:14:14,350:INFO:load_model(model_name=c:\Users\ADMIN\Desktop\code green\model\carbon_model, platform=None, authentication=None, verbose=True)
+2025-04-15 03:14:14,380:INFO:Initializing predict_model()
+2025-04-15 03:14:14,380:INFO:predict_model(self=<pycaret.regression.oop.RegressionExperiment object at 0x00000190F402B9A0>, estimator=Pipeline(memory=Memory(location=None),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['electricity', 'car', 'meat'],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent'))),
+                ('trained_model', LinearRegression(n_jobs=-1))]), probability_threshold=None, encoded_labels=False, raw_score=False, round=4, verbose=True, ml_usecase=None, preprocess=True, encode_labels=<function _SupervisedExperiment.predict_model.<locals>.encode_labels at 0x00000190E1EEF0D0>)
+2025-04-15 03:14:14,380:INFO:Checking exceptions
+2025-04-15 03:14:14,380:INFO:Preloading libraries
+2025-04-15 03:14:14,381:INFO:Set up data.
+2025-04-15 03:14:14,384:INFO:Set up index.

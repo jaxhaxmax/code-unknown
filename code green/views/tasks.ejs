@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Eco Tasks | Code Green</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0fdf4;
+      padding: 2rem;
+      margin: 0;
+      color: #065f46;
+    }
+    h1 {
+      text-align: center;
+      color: #15803d;
+    }
+    .task-form {
+      max-width: 500px;
+      margin: 2rem auto;
+      display: flex;
+      gap: 1rem;
+    }
+    .task-form input {
+      flex: 1;
+      padding: 0.8rem;
+      border: 2px solid #a7f3d0;
+      border-radius: 10px;
+    }
+    .task-form button {
+      background: #22c55e;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 0 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .task-list, .weekly-log {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .task-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #e0f2f1;
+    }
+    .task-item.done span {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+    .task-item form button {
+      background: #15803d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .weekly-log h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .weekly-log ul {
+      padding-left: 1.2rem;
+    }
+    .weekly-log li {
+      padding: 0.4rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌱 Eco To-Do List</h1>
+
+  <form class="task-form" method="POST" action="/tasks">
+    <input type="text" name="title" placeholder="Add a green action..." required />
+    <button type="submit">Add</button>
+  </form>
+
+  <div class="task-list">
+    <% if (tasks.length === 0) { %>
+      <p>No tasks yet. Start small 🌱</p>
+    <% } else { %>
+      <% tasks.forEach(task => { %>
+        <div class="task-item <%= task.done ? 'done' : '' %>">
+          <span><%= task.title %></span>
+          <% if (!task.done) { %>
+            <form method="POST" action="/tasks/done">
+              <input type="hidden" name="taskId" value="<%= task._id %>">
+              <button>Mark Done</button>
+            </form>
+          <% } else { %>
+            <span>✅</span>
+          <% } %>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+
+  <div class="weekly-log">
+    <h2>📅 Weekly Eco Achievements</h2>
+    <% if (weeklyDone.length === 0) { %>
+      <p>No completed activities this week. Let’s do something green!</p>
+    <% } else { %>
+      <ul>
+        <% weeklyDone.forEach(item => { %>
+          <li>✅ <%= item.title %> – <%= item.createdAt.toLocaleDateString() %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+  </div>
+
+</body>
+</html>

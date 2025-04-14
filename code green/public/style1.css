@@ -1,0 +1,99 @@
+/* public/style.css */
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(to right, #a8edea, #fed6e3);
+    color: #2e3d49;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  h1 {
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    margin-bottom: 30px;
+    color: #555;
+    font-size: 0.95em;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #a7ffeb;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+  
+  .input-group input:focus {
+    border-color: #00bfa5;
+    outline: none;
+    background-color: #f1fdfb;
+  }
+  
+  button {
+    background-color: #00c853;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #00b34f;
+    transform: scale(1.03);
+  }
+  
+  .result-card {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f1fdfb;
+    border-left: 6px solid #00c853;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .result-card.hidden {
+    display: none;
+  }
+  
+  .result-card ul {
+    padding-left: 20px;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
